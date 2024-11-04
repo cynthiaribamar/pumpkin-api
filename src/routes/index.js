@@ -12,7 +12,6 @@ const limiter = rateLimit({
 const corsOptions = {
     origin: ["https://pumpkin-run.vercel.app/", "https://site-endless-run-game.vercel.app/"],
     methods: ["GET", "POST"],
-    allowedHeaders: ["Content-Type", "User-Agent"]
 }
 
 const routes = (app) => {
