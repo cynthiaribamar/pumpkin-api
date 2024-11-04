@@ -15,7 +15,6 @@ const corsOptions = {
 }
 
 const routes = (app) => {
-
     app.route("/").get((req, res) => res.status(200).send("Pumpkin Api"));
     app.use(express.json(), ranking, limiter, cors(corsOptions));
 };
