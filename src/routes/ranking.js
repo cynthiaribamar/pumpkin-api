@@ -1,12 +1,10 @@
 import express from "express";
 import PlayerController from "../controllers/playerController.js";
 
-const routes = express.Router();
+const playerRoutes = express.Router();
 
-routes.get("/", (req, res) => res.status(200).json("Pumpkin Api"))
+playerRoutes.get("/ranking", PlayerController.getRanking);
 
-routes.get("/ranking", PlayerController.getRanking);
+playerRoutes.post("/ranking", PlayerController.postScore);
 
-routes.post("/ranking", PlayerController.postScore);
-
-export default routes;
+export default playerRoutes;
