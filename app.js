@@ -1,6 +1,6 @@
 import express from "express";
-import routes from "./routes/index.js";
-import conectaNoMongo from "./config/db.js";
+import routes from "./src/routes/index.js";
+import conectaNoMongo from "./src/config/db.js";
 
 const app = express();
 
