@@ -2,6 +2,7 @@ import express from "express";
 import ranking from "./ranking.js";
 import rateLimit from "express-rate-limit";
 import cors from "cors";
+import conectaNoMongo from "../config/db.js";
 
 const limiter = rateLimit({
     windowMs: 15 * 60 * 1000,
@@ -14,7 +15,8 @@ const corsOptions = {
     methods: ["GET", "POST"],
 }
 
-const routes = (app) => {
+const routes = async(app) => {
+    await conectaNoMongo()
     app.route("/").get((req, res) => res.status(200).send("Pumpkin Api"));
     app.use(express.json(), ranking, limiter, cors(corsOptions));
 };
