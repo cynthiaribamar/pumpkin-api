@@ -4,7 +4,7 @@ import conectaNoMongo from "./src/config/db.js";
 
 const app = express();
 
-const PORTA = process.env.PORT || 3000;
+const PORTA = process.env.PORT;
 
 app.listen(PORTA, async () => {
     await conectaNoMongo()
