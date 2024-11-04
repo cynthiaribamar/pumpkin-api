@@ -12,5 +12,4 @@ app.listen(PORTA, async () => {
     console.log(`Servidor rodando na porta ${PORTA}`);
 })
 
-
 export default app;
