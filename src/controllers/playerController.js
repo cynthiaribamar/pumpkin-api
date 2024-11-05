@@ -5,6 +5,7 @@ class PlayerController {
     static async getRanking(req, res) {
         try {
             const ranking = await player.find({}).sort({ pontos: -1 })
+            res.setHeader("Access-Control-Allow-Origin", "*");
             res.status(200).json(ranking)
 
         } catch (err) {
