@@ -10,10 +10,12 @@ const limiter = rateLimit({
     message: "Muitas requisições vindas deste IP. Tente novamente mais tarde."
 })
 
-const routes = async(app) => {
+const routes = async (app) => {
     await conectaNoMongo()
+    app.use(cors());
+    app.use(rateLimit);
     app.route("/").get((req, res) => res.status(200).send("Pumpkin Api"));
-    app.use(express.json(), ranking, limiter, cors());
+    app.use(express.json(), ranking);
 };
 
 export default routes;
