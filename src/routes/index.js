@@ -15,7 +15,6 @@ const routes = async (app) => {
 
     // Middleware
     app.use(cors());
-    app.use(express.json());
 
     app.use(
         rateLimit({
@@ -27,7 +26,7 @@ const routes = async (app) => {
     app.route("/").get((req, res) => res.status(200).send("Pumpkin Api"));
 
     // Rotas de ranking
-    app.use("/ranking", ranking);
+    app.use(express.json(), ranking);
 };
 
 export default routes;
