@@ -11,11 +11,23 @@ const limiter = rateLimit({
 })
 
 const routes = async (app) => {
-    await conectaNoMongo()
+    await conectaNoMongo();
+
+    // Middleware
     app.use(cors());
-    app.use(rateLimit);
+    app.use(express.json());
+
+    app.use(
+        rateLimit({
+            windowMs: 15 * 60 * 1000,
+            max: 100,
+        })
+    );
+
     app.route("/").get((req, res) => res.status(200).send("Pumpkin Api"));
-    app.use(express.json(), ranking);
+
+    // Rotas de ranking
+    app.use("/ranking", ranking);
 };
 
 export default routes;
